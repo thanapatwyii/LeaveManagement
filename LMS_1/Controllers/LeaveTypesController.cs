@@ -9,9 +9,8 @@ using LMS_1.Data;
 using AutoMapper;
 using LMS_1.Models;
 
-namespace LMS_1.Controllers
+namespace LeaveManagement.Web.Controllers
 {
-
     public class LeaveTypesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -33,19 +32,19 @@ namespace LMS_1.Controllers
         // GET: LeaveTypes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.LeaveTypes == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var leaveType = await _context.LeaveTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var leaveType = await _context.LeaveTypes.FindAsync(id);
             if (leaveType == null)
             {
                 return NotFound();
             }
 
-            return View(leaveType);
+            var leaveTypeVM = mapper.Map<LeaveTypeVM>(leaveType);
+            return View(leaveTypeVM);
         }
 
         // GET: LeaveTypes/Create
@@ -74,7 +73,7 @@ namespace LMS_1.Controllers
         // GET: LeaveTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.LeaveTypes == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -128,7 +127,7 @@ namespace LMS_1.Controllers
         // GET: LeaveTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.LeaveTypes == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -148,16 +147,8 @@ namespace LMS_1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.LeaveTypes == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.LeaveTypes'  is null.");
-            }
             var leaveType = await _context.LeaveTypes.FindAsync(id);
-            if (leaveType != null)
-            {
-                _context.LeaveTypes.Remove(leaveType);
-            }
-
+            _context.LeaveTypes.Remove(leaveType);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

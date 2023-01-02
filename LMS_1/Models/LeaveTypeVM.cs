@@ -11,7 +11,7 @@ public class LeaveTypeVM
     [Required]
     public string Name { get; set; }
 
-    [Display(Name = "Dafault Number Of Days!!!x")]
+    [Display(Name = "Dafault Number Of Days")]
     [Required]
     [Range (0,100, ErrorMessage ="Invalid Number")]
     public int DefaultDays { get; set; }
