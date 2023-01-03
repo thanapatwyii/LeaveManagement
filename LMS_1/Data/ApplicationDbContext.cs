@@ -9,7 +9,9 @@ namespace LMS_1.Data
             : base(options)
         {
         }
+
         public DbSet<LeaveType> LeaveTypes { get; set; }
         public DbSet<LeaveAllocation> LeaveAllocations { get; set; }
+
     }
 }
