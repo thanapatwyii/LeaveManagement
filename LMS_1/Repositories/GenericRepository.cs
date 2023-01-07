@@ -1,6 +1,5 @@
 ﻿using LMS_1.Contracts;
 using LMS_1.Data;
-using LMS_1.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace LMS_1.Repositories
@@ -11,11 +10,11 @@ namespace LMS_1.Repositories
 
 
         //create a constructor that injects data into the repository(same principle as the injecting data into the constructor
-        public GenericRepository(ApplicationDbContext context) 
+        public GenericRepository(ApplicationDbContext context)
         {
             this.context = context;
         }
-       
+
         public async Task<T> AddAsync(T entity)
         {
             await context.AddAsync(entity);

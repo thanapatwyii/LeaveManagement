@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace LMS_1.Models;
 
@@ -13,6 +12,6 @@ public class LeaveTypeVM
 
     [Display(Name = "Dafault Number Of Days")]
     [Required]
-    [Range (0,100, ErrorMessage ="Invalid Number")]
+    [Range(0, 100, ErrorMessage = "Invalid Number")]
     public int DefaultDays { get; set; }
 }

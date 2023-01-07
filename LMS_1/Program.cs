@@ -1,11 +1,11 @@
-using LMS_1.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using AutoMapper;
 using LMS_1.Configurations;
-using LMS_1.Models;
 using LMS_1.Contracts;
+using LMS_1.Data;
 using LMS_1.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using LMS_1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,10 +16,18 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<Employee>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddTransient<IEmailSender>(s => new EmailSender("localhost", 25, "no-reply@leavemanagement.com"));
+
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
+
+
+
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();

@@ -11,4 +11,3 @@
         public string? EmployeeId { get; set; } /* foreign key to connect to employee tabel*/
     }
 }
- 

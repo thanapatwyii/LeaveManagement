@@ -4,6 +4,7 @@ using LMS_1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS_1.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230107110806_fixUserTableColumnNames")]
+    partial class fixUserTableColumnNames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,10 +36,10 @@ namespace LMS_1.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DateJoined")
+                    b.Property<DateTime>("DateJoined")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DateOfBirth")
+                    b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -106,7 +108,9 @@ namespace LMS_1.Data.Migrations
                         {
                             Id = "408aa945-3d84-4421-8342-7269ec64d949",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e4d5b755-644b-4242-a76c-687d7eec53ff",
+                            ConcurrencyStamp = "d9c46e4c-1f11-4b34-999d-63dc7f056fd2",
+                            DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             Firstname = "System",
@@ -114,9 +118,9 @@ namespace LMS_1.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOkTh/XjqTYQuO+VybdC3TKMJmkw49L2n6m7Q5MYA2l+EdG74Yfru4AwsWMJGGSYLA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDFNiBI4HqLjllyPueQrhAOcTr1WcTi1vzHWce+PgYEMM91CV0iS9NbdZwpcpt+0xw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e5f86833-d787-48ed-8985-1519fdb17d4e",
+                            SecurityStamp = "c18faab7-3f72-4ee2-8deb-6aa62a434ccc",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -124,7 +128,9 @@ namespace LMS_1.Data.Migrations
                         {
                             Id = "3f4631bd-f907-4409-b416-ba356312e659",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "51b226ed-5c1e-499e-b59d-3af5bc149b4f",
+                            ConcurrencyStamp = "cd5f7486-49bb-4999-b282-939775b55392",
+                            DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             Firstname = "System",
@@ -132,9 +138,9 @@ namespace LMS_1.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEq3YBW2Kp2lt+oS6MP2t+DHhcvObCvoB+Q+UwHweZVO78YCQLyWN0MPE8Kyj7Bp4Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECDtwgGsUNB68fqRqpXifJSW4c58hCQpX8iGnexwre9CsHHvjOCXYF1XpCTNtY0LiQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d8f2dcb9-b938-40e3-a1f3-25e4e7658827",
+                            SecurityStamp = "6b7af727-c71b-4711-a0e9-6c419ddf4b88",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
                         });
@@ -225,14 +231,14 @@ namespace LMS_1.Data.Migrations
                         new
                         {
                             Id = "cac43a6e-f7bb-4448-baaf-1add431ccbbf",
-                            ConcurrencyStamp = "35d136b4-ca81-4f38-b8c5-35eb3626654e",
+                            ConcurrencyStamp = "10cbbe6b-9c92-466f-bef0-5d2b62fb544e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "cac43a7e-f7cb-4148-baaf-1acb431eabbf",
-                            ConcurrencyStamp = "b51536e2-2ba6-45ca-8f0b-853042667d27",
+                            ConcurrencyStamp = "10218c33-bc69-477c-820c-70171bc22406",
                             Name = "User",
                             NormalizedName = "USER"
                         });

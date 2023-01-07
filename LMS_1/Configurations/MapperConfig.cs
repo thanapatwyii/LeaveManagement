@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using LMS_1.Models;
 using LMS_1.Data;
+using LMS_1.Models;
 
 namespace LMS_1.Configurations
 {

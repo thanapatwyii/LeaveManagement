@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using LMS_1.Data;
-using AutoMapper;
-using LMS_1.Models;
+﻿using AutoMapper;
 using LMS_1.Contracts;
-using LMS_1.Repositories;
+using LMS_1.Data;
+using LMS_1.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LeaveManagement.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeRepository leaveTypeRepository;
