@@ -1,13 +1,19 @@
-﻿namespace LMS_1.Data
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace LMS_1.Data
 {
     public class LeaveAllocation : BaseEntity
     {
 
-        public int NumberOfDays { get; set; } /* the resulting number of days*/
+            public int NumberOfDays { get; set; }
 
-        public LeaveType? LeaveType { get; set; } /* parse the leave type property from the leavetype table*/
-        public int LeaveTypeId { get; set; } /* foreign key to connect to leavetype table */
+            [ForeignKey("LeaveTypeId")]
+            public LeaveType LeaveType { get; set; }
+            public int LeaveTypeId { get; set; }
 
-        public string? EmployeeId { get; set; } /* foreign key to connect to employee tabel*/
+            public string EmployeeId { get; set; }
+
+            public int Period { get; set; }
+
     }
 }
